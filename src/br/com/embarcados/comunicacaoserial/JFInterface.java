@@ -32,7 +32,6 @@ public class JFInterface extends javax.swing.JFrame {
         jBLedOn = new javax.swing.JButton();
         jBLedOff = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jBClose = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -71,18 +70,6 @@ public class JFInterface extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("LED:");
 
-        jBClose.setText("Sair");
-        jBClose.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBCloseMouseClicked(evt);
-            }
-        });
-        jBClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCloseActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Motor:");
 
@@ -114,10 +101,6 @@ public class JFInterface extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBClose)
-                .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +123,7 @@ public class JFInterface extends javax.swing.JFrame {
                         .addComponent(jBLedOn)
                         .addGap(18, 18, 18)
                         .addComponent(jBLedOff)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,9 +148,7 @@ public class JFInterface extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(jBClose)
-                .addContainerGap())
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -180,10 +161,6 @@ public class JFInterface extends javax.swing.JFrame {
     private void jBLedOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLedOffActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBLedOffActionPerformed
-
-    private void jBCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCloseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBCloseActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -200,11 +177,6 @@ public class JFInterface extends javax.swing.JFrame {
     private void jBLedOffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLedOffMouseClicked
         conn.comunicacaoArduino(jBLedOff);
     }//GEN-LAST:event_jBLedOffMouseClicked
-
-    private void jBCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCloseMouseClicked
-        conn.comunicacaoArduino(jBClose);
-        System.exit(0);
-    }//GEN-LAST:event_jBCloseMouseClicked
 
     /**
      * @param args the command line arguments
@@ -242,7 +214,6 @@ public class JFInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBClose;
     private javax.swing.JButton jBLedOff;
     private javax.swing.JButton jBLedOn;
     private javax.swing.JButton jButton1;
