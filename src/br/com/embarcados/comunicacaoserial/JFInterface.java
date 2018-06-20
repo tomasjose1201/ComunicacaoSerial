@@ -33,13 +33,14 @@ public class JFInterface extends javax.swing.JFrame {
         jBLedOff = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jBDesligaMotor = new javax.swing.JButton();
+        jBNivel1 = new javax.swing.JButton();
+        jBNivel2 = new javax.swing.JButton();
+        jBNivel3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        jBTemperatura = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        jBClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,27 +74,71 @@ public class JFInterface extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Motor:");
 
-        jButton1.setText("Desligado");
+        jBDesligaMotor.setText("Desligado");
+        jBDesligaMotor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBDesligaMotorMouseClicked(evt);
+            }
+        });
+        jBDesligaMotor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDesligaMotorActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Nível 1");
+        jBNivel1.setText("Nível 1");
+        jBNivel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBNivel1MouseClicked(evt);
+            }
+        });
 
-        jButton3.setText("Nível 2");
+        jBNivel2.setText("Nível 2");
+        jBNivel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBNivel2MouseClicked(evt);
+            }
+        });
 
-        jButton4.setText("Nível 3");
+        jBNivel3.setText("Nível 3");
+        jBNivel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBNivel3MouseClicked(evt);
+            }
+        });
+        jBNivel3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNivel3ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Temperatura:");
 
-        jButton5.setText("Ler");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jBTemperatura.setText("Ler");
+        jBTemperatura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBTemperaturaMouseClicked(evt);
+            }
+        });
+        jBTemperatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jBTemperaturaActionPerformed(evt);
             }
         });
 
+        jTextField1.setEditable(false);
+        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jBClose.setText("Sair");
+        jBClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBCloseMouseClicked(evt);
             }
         });
 
@@ -104,25 +149,29 @@ public class JFInterface extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4))
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBLedOn)
                         .addGap(18, 18, 18)
-                        .addComponent(jBLedOff)))
+                        .addComponent(jBLedOff))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBDesligaMotor)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBNivel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBNivel2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBTemperatura)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jBNivel3)
+                            .addComponent(jBClose))))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -138,17 +187,23 @@ public class JFInterface extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(jBDesligaMotor)
+                    .addComponent(jBNivel1)
+                    .addComponent(jBNivel2)
+                    .addComponent(jBNivel3))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBTemperatura)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(29, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBClose)
+                        .addContainerGap())))
         );
 
         pack();
@@ -162,9 +217,9 @@ public class JFInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBLedOffActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jBTemperaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTemperaturaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jBTemperaturaActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -177,6 +232,39 @@ public class JFInterface extends javax.swing.JFrame {
     private void jBLedOffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLedOffMouseClicked
         conn.comunicacaoArduino(jBLedOff);
     }//GEN-LAST:event_jBLedOffMouseClicked
+
+    private void jBDesligaMotorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDesligaMotorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBDesligaMotorActionPerformed
+
+    private void jBNivel3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNivel3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBNivel3ActionPerformed
+
+    private void jBDesligaMotorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBDesligaMotorMouseClicked
+        conn.comunicacaoArduino(jBDesligaMotor);
+    }//GEN-LAST:event_jBDesligaMotorMouseClicked
+
+    private void jBNivel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBNivel1MouseClicked
+        conn.comunicacaoArduino(jBNivel1);
+    }//GEN-LAST:event_jBNivel1MouseClicked
+
+    private void jBNivel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBNivel2MouseClicked
+        conn.comunicacaoArduino(jBNivel2);
+    }//GEN-LAST:event_jBNivel2MouseClicked
+
+    private void jBNivel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBNivel3MouseClicked
+        conn.comunicacaoArduino(jBNivel3);
+    }//GEN-LAST:event_jBNivel3MouseClicked
+
+    private void jBTemperaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBTemperaturaMouseClicked
+        conn.comunicacaoArduino(jBTemperatura);
+    }//GEN-LAST:event_jBTemperaturaMouseClicked
+
+    private void jBCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCloseMouseClicked
+        conn.comunicacaoArduino(jBClose);
+        System.exit(0);
+    }//GEN-LAST:event_jBCloseMouseClicked
 
     /**
      * @param args the command line arguments
@@ -214,13 +302,14 @@ public class JFInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBClose;
+    private javax.swing.JButton jBDesligaMotor;
     private javax.swing.JButton jBLedOff;
     private javax.swing.JButton jBLedOn;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jBNivel1;
+    private javax.swing.JButton jBNivel2;
+    private javax.swing.JButton jBNivel3;
+    private javax.swing.JButton jBTemperatura;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

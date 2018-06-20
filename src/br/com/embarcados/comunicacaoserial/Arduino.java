@@ -23,15 +23,32 @@ public class Arduino {
      * @param button - Botão que é clicado na interface Java
      */
     public void comunicacaoArduino(JButton button) {
-        if ("Ligar".equals(button.getActionCommand())) {
-            arduino.enviaDados(1);
-            System.out.println(button.getText());//Imprime o nome do botão pressionado
-        } else if ("Desligar".equals(button.getActionCommand())) {
-            arduino.enviaDados(2);
-            System.out.println(button.getText());
-        } else {
-            arduino.close();
-            System.out.println(button.getText());//Imprime o nome do botão pressionado
+        switch (button.getActionCommand()) {
+            case "Ligar":
+                arduino.enviaDados(1);
+                break;
+            case "Desligar":
+                arduino.enviaDados(2);
+                break;
+            case "Desligado":
+                arduino.enviaDados(3);
+                break;
+            case "Nível 1":
+                arduino.enviaDados(4);
+                break;
+            case "Nível 2":
+                arduino.enviaDados(5);
+                break;
+            case "Nível 3":
+                arduino.enviaDados(6);
+                break;
+            case "Ler":
+                arduino.enviaDados(7);
+                break;
+            default:
+                arduino.close();
+                break;
         }
+        System.out.println(button.getText());
     }
 }
