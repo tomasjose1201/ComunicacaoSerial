@@ -44,6 +44,8 @@ public class Arduino {
                 break;
             case "Ler":
                 arduino.enviaDados(7);
+                String resultado = arduino.leDados();
+                System.out.println(resultado);
                 break;
             default:
                 arduino.close();

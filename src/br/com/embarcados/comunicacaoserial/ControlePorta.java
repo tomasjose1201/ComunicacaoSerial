@@ -4,14 +4,19 @@ import gnu.io.CommPortIdentifier;
 import gnu.io.NoSuchPortException;
 import gnu.io.SerialPort;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class ControlePorta {
 
+    private InputStream serialIn;
     private OutputStream serialOut;
     private int taxa;
     private String portaCOM;
+    private String temperatureBuffer;
 
     /**
      * Construtor da classe ControlePorta
@@ -44,6 +49,7 @@ public class ControlePorta {
             //Abre a porta COM 
             SerialPort port = (SerialPort) portId.open("Comunicação serial", this.taxa);
             serialOut = port.getOutputStream();
+            serialIn = port.getInputStream();
             port.setSerialPortParams(this.taxa, //taxa de transferência da porta serial 
                     SerialPort.DATABITS_8, //taxa de 10 bits 8 (envio)
                     SerialPort.STOPBITS_1, //taxa de 10 bits 1 (recebimento)
@@ -75,5 +81,23 @@ public class ControlePorta {
             JOptionPane.showMessageDialog(null, "Não foi possível enviar o dado. ",
                     "Enviar dados", JOptionPane.PLAIN_MESSAGE);
         }
+    }
+
+    public String leDados() {
+        try {
+            int available = serialIn.available();
+            byte chunk[] = new byte[available];
+            serialIn.read(chunk, 0, available);
+            String s = new String(chunk);
+            if (s.contains("T")) {
+                temperatureBuffer = s;
+            } else {
+                temperatureBuffer += s;
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível ler o dado. ",
+                    "Ler dados", JOptionPane.PLAIN_MESSAGE);
+        }
+        return temperatureBuffer;
     }
 }
