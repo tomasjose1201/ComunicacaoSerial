@@ -8,6 +8,7 @@ import javax.swing.JButton;
 public class Arduino {
 
     private ControlePorta arduino;
+    private String tempLida;
 
     /**
      * Construtor da classe Arduino
@@ -23,6 +24,7 @@ public class Arduino {
      * @param button - Botão que é clicado na interface Java
      */
     public void comunicacaoArduino(JButton button) {
+        System.out.println(button.getText());
         switch (button.getActionCommand()) {
             case "Ligar":
                 arduino.enviaDados(1);
@@ -44,13 +46,15 @@ public class Arduino {
                 break;
             case "Ler":
                 arduino.enviaDados(7);
-                String resultado = arduino.leDados();
-                System.out.println(resultado);
+                tempLida = arduino.leDados();
                 break;
             default:
                 arduino.close();
                 break;
         }
-        System.out.println(button.getText());
+    }
+    
+    public String getTempLida() {
+        return tempLida;
     }
 }

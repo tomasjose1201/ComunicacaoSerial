@@ -5,12 +5,14 @@
  */
 package br.com.embarcados.comunicacaoserial;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author Tom
  */
 public class JFInterface extends javax.swing.JFrame {
-    
+
     Arduino conn = new Arduino();
 
     /**
@@ -39,7 +41,7 @@ public class JFInterface extends javax.swing.JFrame {
         jBNivel3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jBTemperatura = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jTemp = new javax.swing.JTextField();
         jBClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -127,11 +129,11 @@ public class JFInterface extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTemp.setEditable(false);
+        jTemp.setBackground(new java.awt.Color(204, 204, 204));
+        jTemp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTempActionPerformed(evt);
             }
         });
 
@@ -167,7 +169,7 @@ public class JFInterface extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBTemperatura)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jBNivel3)
@@ -198,7 +200,7 @@ public class JFInterface extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jBTemperatura)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(29, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -221,9 +223,9 @@ public class JFInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBTemperaturaActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTempActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTempActionPerformed
 
     private void jBLedOnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLedOnMouseClicked
         conn.comunicacaoArduino(jBLedOn);
@@ -259,6 +261,7 @@ public class JFInterface extends javax.swing.JFrame {
 
     private void jBTemperaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBTemperaturaMouseClicked
         conn.comunicacaoArduino(jBTemperatura);
+        jTemp.setText(conn.getTempLida());
     }//GEN-LAST:event_jBTemperaturaMouseClicked
 
     private void jBCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCloseMouseClicked
@@ -313,6 +316,7 @@ public class JFInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTemp;
     // End of variables declaration//GEN-END:variables
+
 }
